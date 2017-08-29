@@ -1,0 +1,20 @@
+Sandbox for playing with libopencm3 in a nucleo-144 evaluation board
+
+If you forgot to clone --recursive(ly), do this first:
+
+  % git submodule init
+  % git submodule update
+
+Once you've pulled in the opencm3 library, you can build it like this:
+
+  % make opencm3
+
+When the library built without error, build the firmware like so:
+
+  % make
+
+To flash the firmware onto a nucleo-144 board:
+
+  % st-flash hello-world.bin 0x08000000
+
+The user LED LD1 should blink after the flasher is done.
