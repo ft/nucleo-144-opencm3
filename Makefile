@@ -86,7 +86,7 @@ LDFLAGS_SCRIPT = -Tnucleo-144.ld
 
 # Garbage collect sections from linker output
 LDFLAGS_CLEANUP = -Wl,--gc-sections
-ifneq ($(RELEASE),1)
+ifeq ($(VERBOSE),1)
 LDFLAGS_CLEANUP += -Wl,--print-gc-sections
 endif
 
