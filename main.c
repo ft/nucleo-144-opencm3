@@ -7,7 +7,9 @@
 
 #include <stddef.h>
 #include <stdint.h>
+#ifdef WITH_SEMIHOSTING
 #include <stdio.h>
+#endif /* WITH_SEMIHOSTING */
 
 #include <libopencm3/stm32/rcc.h>
 #include <libopencm3/stm32/gpio.h>
