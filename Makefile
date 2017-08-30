@@ -39,7 +39,7 @@ CFLAGS_TARGET += -mfloat-abi=hard -mfpu=fpv5-sp-d16
 CFLAGS_OPENCM3 = -I$(OPENCM3)/include -DSTM32F7
 
 # -Wa,OPTIONS passes OPTIONS to the assembler. This is useful to generate
-# assembler listings during the build process. We're assumbing the GNU assem-
+# assembler listings during the build process. We're assuming the GNU assem-
 # bler with its features here. The options we're passing in:
 #
 #    a   Generate assembler listings
