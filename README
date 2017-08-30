@@ -18,3 +18,11 @@ To flash the firmware onto a nucleo-144 board:
   % st-flash hello-world.bin 0x08000000
 
 The user LED LD1 should blink after the flasher is done.
+
+The firmware can be used to demo semihosting (a feature that let's a micro
+controller issue a couple of syscalls on its host through a JTAG connection).
+To build with semihosting enabled, do:
+
+  % make WITH_SEMIHOSTING=1
+
+Semihosting was tested with OpenOCD v0.10.0.
