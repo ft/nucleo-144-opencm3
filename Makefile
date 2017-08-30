@@ -57,12 +57,18 @@ else
 CFLAGS_DEBUG = -O0 -ggdb
 endif
 
+ifeq ($(WITH_SEMIHOSTING),1)
+CFLAGS_SEMIHOSTING = -DWITH_SEMIHOSTING
+else
+CFLAGS_SEMIHOSTING =
+endif
+
 # Store compiler options in ELF section
 CFLAGS_EXTRA = -frecord-gcc-switches
 
 CFLAGS = $(CFLAGS_STRICTNESS) $(CFLAGS_LANGUAGE) $(CFLAGS_TARGET)
 CFLAGS += $(CFLAGS_OPENCM3) $(CFLAGS_ASSEMBLER) $(CFLAGS_DEBUG)
-CFLAGS += $(CFLAGS_STANDALONE) $(CFLAGS_EXTRA)
+CFLAGS += $(CFLAGS_STANDALONE) $(CFLAGS_SEMIHOSTING) $(CFLAGS_EXTRA)
 
 COMPILE = $(CC) $(CFLAGS)
 
@@ -87,9 +93,18 @@ endif
 # Produce map files for firmware
 LDFLAGS_MAPFILE = -Wl,-Map=$(patsubst %.elf,%.map,$(@))
 
+# Semihosting support
+ifeq ($(WITH_SEMIHOSTING),1)
+LDFLAGS_SEMIHOSTING = --specs=rdimon.specs
+LDFLAGS_SEMIHOSTING += -Wl,--start-group -lc -lrdimon -lgcc -Wl,--end-group
+else
+LDFLAGS_SEMIHOSTING =
+endif
+
 LDFLAGS = $(LDFLAGS_TARGET) $(LDFLAGS_STANDALONE)
 LDFLAGS += $(LDFLAGS_OPENCM3) $(LDFLAGS_SCRIPT)
 LDFLAGS += $(LDFLAGS_CLEANUP) $(LDFLAGS_MAPFILE)
+LDFLAGS += $(LDFLAGS_SEMIHOSTING)
 
 # Main targets: Use "make opencm3" once. "make all" to build the firmware.
 # Similarly there are "make opencm3-clean" and "make clean" for cleanup.
