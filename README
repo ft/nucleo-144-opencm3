@@ -25,4 +25,4 @@ To build with semihosting enabled, do:
 
   % make WITH_SEMIHOSTING=1
 
-Semihosting was tested with OpenOCD v0.10.0.
+Semihosting was tested with OpenOCD v0.10.0, as well as a BlackMagic Probe.
