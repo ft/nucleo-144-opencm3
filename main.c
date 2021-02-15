@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2017 Frank Terbeck <ft@bewatermyfriend.org>, All rights
- * reserved.
+ * Copyright (c) 2017-2021 Frank Terbeck <ft@bewatermyfriend.org>
+ * All rights reserved.
  *
  * Terms for redistribution and use can be found in LICENCE.
  */
